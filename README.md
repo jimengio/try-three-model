@@ -7,8 +7,31 @@
 *   [ ] Re-render on resize.
 *   [ ] Zoom in/out on scroll event.
 
-Thanks https://gist.github.com/cecilemuller/0be98dcbb0c7efff64762919ca486a59
-
 ### Usage
 
-GLTF https://github.com/mrdoob/three.js/issues/11990
+Use in React:
+
+```jsx
+let gltfDemo = "http://localhost:8080/data/aircraft.gltf";
+
+<ModelViewer url={gltfDemo} width={1600} height={800} positionShift={{ x: 0, y: -2, z: 0 }} />;
+```
+
+Default Props:
+
+```coffee
+url: string;
+width: number;
+height: number;
+
+maxCamaraZ?: number; // defaults to 100
+minCamaraZ?: number; // defaults to 10
+positionShift?: { x: number; y: number; z: number };
+```
+
+### Resources
+
+*   Use GLFTF in Webpack https://gist.github.com/cecilemuller/0be98dcbb0c7efff64762919ca486a59
+*   GLTF of a plane https://github.com/mrdoob/three.js/issues/11990
+*   GLTF Loader https://threejs.org/docs/#examples/loaders/GLTFLoader
+*   Quaternion Rotation https://jsfiddle.net/MadLittleMods/n6u6asza/
