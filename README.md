@@ -14,7 +14,7 @@ Use in React:
 ```jsx
 let gltfDemo = "http://localhost:8080/data/aircraft.gltf";
 
-<ModelViewer url={gltfDemo} width={1600} height={800} positionShift={{ x: 0, y: -2, z: 0 }} />;
+<ModelViewer url={gltfDemo} size={{ width: 1600, height: 800 }} positionShift={{ x: 0, y: -2, z: 0 }} />;
 ```
 
 Default Props:

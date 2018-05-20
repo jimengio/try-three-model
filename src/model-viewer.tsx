@@ -16,9 +16,11 @@ function toRadians(angle) {
 
 interface IProps {
 	url: string;
-	width: number;
-	height: number;
 
+	size?: {
+		width: number;
+		height: number;
+	};
 	maxCamaraZ?: number; // defaults to 100
 	minCamaraZ?: number; // defaults to 10
 	positionShift?: { x: number; y: number; z: number };
@@ -29,7 +31,8 @@ interface IState {}
 export default class ModelViewer extends React.Component<IProps, IState> {
 	containerElement: Element;
 	object: Three.Object3D;
-	camera: Three.Camera;
+	camera: any;
+	renderer: Three.Renderer;
 
 	isDragging: boolean;
 	previousPosition: {
@@ -52,7 +55,7 @@ export default class ModelViewer extends React.Component<IProps, IState> {
 		return (
 			<div
 				className={styleContainer}
-				style={{ width: this.props.width, height: this.props.height }}
+				style={{ width: "100%", height: "100%" }}
 				ref={el => {
 					this.containerElement = el;
 				}}
@@ -66,15 +69,51 @@ export default class ModelViewer extends React.Component<IProps, IState> {
 
 	componentDidMount() {
 		this.draw();
+
+		if (this.props.size == null) {
+			window.addEventListener("resize", this.onContainerResize, false);
+		}
+	}
+
+	componentWillUnmount() {
+		if (this.props.size == null) {
+			window.removeEventListener("resize", this.onContainerResize, false);
+		}
+	}
+
+	onContainerResize = () => {
+		let { width, height } = this.getSize();
+		this.camera.aspect = width / height;
+		this.camera.updateProjectionMatrix();
+		this.renderer.setSize(width, height);
+	};
+
+	getSize() {
+		if (this.props.size != null) {
+			return {
+				width: this.props.size.width,
+				height: this.props.size.height
+			};
+		} else {
+			let rect = this.containerElement.getBoundingClientRect();
+			return {
+				width: rect.width,
+				height: rect.height
+			};
+		}
 	}
 
 	draw() {
 		let scene = new Three.Scene();
 		let renderer = new Three.WebGLRenderer({ antialias: true });
-		renderer.setSize(this.props.width, this.props.height);
+		this.renderer = renderer;
+
+		let { width, height } = this.getSize();
+
+		renderer.setSize(width, height);
 		this.containerElement.appendChild(renderer.domElement);
 
-		let camera = new Three.PerspectiveCamera(45, this.props.width / this.props.height, 0.1, 20000);
+		let camera = new Three.PerspectiveCamera(45, width / height, 0.1, 20000);
 		this.camera = camera;
 		camera.position.set(0, 0, 40);
 		scene.add(camera);
@@ -84,10 +123,10 @@ export default class ModelViewer extends React.Component<IProps, IState> {
 		light.position.set(-20, 10, 10);
 		scene.add(light);
 
-		let geometry = new Three.BoxGeometry(0.4, 0.4, 0.4);
-		let material = new Three.MeshLambertMaterial({ color: 0x00ff00 });
-		let cube = new Three.Mesh(geometry, material);
-		scene.add(cube);
+		// let geometry = new Three.BoxGeometry(0.4, 0.4, 0.4);
+		// let material = new Three.MeshLambertMaterial({ color: 0x00ff00 });
+		// let cube = new Three.Mesh(geometry, material);
+		// scene.add(cube);
 
 		renderer.render(scene, camera);
 

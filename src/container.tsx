@@ -10,9 +10,9 @@ interface IState {}
 export default class Container extends React.Component<IProps, IState> {
 	render() {
 		return (
-			<div>
+			<div style={{ height: 800 }}>
 				Demo
-				<ModelViewer url={gltfDemo} width={1600} height={800} positionShift={{ x: 0, y: -2, z: 0 }} />
+				<ModelViewer url={gltfDemo} positionShift={{ x: 0, y: -2, z: 0 }} />
 			</div>
 		);
 	}
