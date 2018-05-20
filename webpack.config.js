@@ -45,6 +45,9 @@ module.exports = {
 		host: "0.0.0.0"
 	},
 	plugins: [
+		new webpack.ProvidePlugin({
+			THREE: "three"
+		}),
 		new webpack.NamedModulesPlugin(),
 		new HtmlWebpackPlugin({
 			filename: "index.html",
