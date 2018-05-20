@@ -29,6 +29,17 @@ minCamaraZ?: number; // defaults to 10
 positionShift?: { x: number; y: number; z: number };
 ```
 
+> Notice: Model is initialized on mounting. If you want replace `url`, you need to replace whole component with `key` property.
+
+### Develop
+
+```bash
+yarn
+yarn dev
+```
+
+Server runs on http://localhost:8080/
+
 ### Resources
 
 *   Use GLFTF in Webpack https://gist.github.com/cecilemuller/0be98dcbb0c7efff64762919ca486a59
