@@ -1,5 +1,7 @@
 ## 3D model viewer
 
+Demo http://repo.mvc-works.org/3d-model-viewer/
+
 ### Plan
 
 *   [ ] 加载 GLTF
@@ -19,11 +21,13 @@ let gltfDemo = "http://localhost:8080/data/aircraft.gltf";
 
 Default Props:
 
-```coffee
+```ts
 url: string;
-width: number;
-height: number;
 
+size?: {
+	width: number;
+	height: number;
+};
 maxCamaraZ?: number; // defaults to 100
 minCamaraZ?: number; // defaults to 10
 positionShift?: { x: number; y: number; z: number };

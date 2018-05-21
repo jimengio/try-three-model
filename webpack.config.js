@@ -45,6 +45,12 @@ module.exports = {
 		host: "0.0.0.0"
 	},
 	plugins: [
+		new webpack.DefinePlugin({
+			__DEV__: true,
+			"process.env": {
+				NODE_ENV: JSON.stringify("development")
+			}
+		}),
 		new webpack.ProvidePlugin({
 			THREE: "three"
 		}),

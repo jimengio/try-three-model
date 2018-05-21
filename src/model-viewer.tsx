@@ -86,6 +86,8 @@ export default class ModelViewer extends React.Component<IProps, IState> {
 		this.camera.aspect = width / height;
 		this.camera.updateProjectionMatrix();
 		this.renderer.setSize(width, height);
+
+		this.rerenderScene();
 	};
 
 	getSize() {

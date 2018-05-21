@@ -1,7 +1,15 @@
 import React from "react";
 import ModelViewer from "./model-viewer";
 
-let gltfDemo = "http://localhost:8080/data/aircraft.gltf";
+let gltfDemo;
+
+declare const __DEV__: boolean;
+
+if (__DEV__) {
+	gltfDemo = "./data/aircraft.gltf";
+} else {
+	gltfDemo = "./aircraft.gltf";
+}
 
 interface IProps {}
 
