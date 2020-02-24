@@ -3,8 +3,13 @@ typings/
 .idea/
 .vscode/
 dist/
+webpack/dll/*
+webpack/data/*
 .awcache/
 
 .DS_Store
 *.swp
 *.log
+
+.cache-loader/*
+lib/*
