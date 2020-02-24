@@ -1,13 +1,13 @@
 ## 3D model viewer
 
-Demo http://repo.mvc-works.org/3d-model-viewer/
+Demo http://fe.jimu.io/try-three-model/
 
 ### Plan
 
-*   [ ] 加载 GLTF
-*   [ ] Drag to rotate with quaternion.
-*   [ ] Re-render on resize.
-*   [ ] Zoom in/out on scroll event.
+- [ ] 加载 GLTF
+- [ ] Drag to rotate with quaternion.
+- [ ] Re-render on resize.
+- [ ] Zoom in/out on scroll event.
 
 ### Usage
 
@@ -46,7 +46,7 @@ Server runs on http://localhost:8080/
 
 ### Resources
 
-*   Use GLFTF in Webpack https://gist.github.com/cecilemuller/0be98dcbb0c7efff64762919ca486a59
-*   GLTF of a plane https://github.com/mrdoob/three.js/issues/11990
-*   GLTF Loader https://threejs.org/docs/#examples/loaders/GLTFLoader
-*   Quaternion Rotation https://jsfiddle.net/MadLittleMods/n6u6asza/
+- Use GLFTF in Webpack https://gist.github.com/cecilemuller/0be98dcbb0c7efff64762919ca486a59
+- GLTF of a plane https://github.com/mrdoob/three.js/issues/11990
+- GLTF Loader https://threejs.org/docs/#examples/loaders/GLTFLoader
+- Quaternion Rotation https://jsfiddle.net/MadLittleMods/n6u6asza/

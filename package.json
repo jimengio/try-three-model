@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --hot",
     "dev": "webpack-dev-server --hot",
-    "release": "rm -rf dist/* && webpack --progress --config webpack.release.js",
+    "release": "rm -rf dist/* && webpack --progress --config webpack.release.js && cp -v data/*.gltf dist/",
+    "upload": "rsync -avr --progress dist/ fe.jimu.io:/web-assets/repo/jimengio/try-three-model",
     "build": "yarn release",
     "serve": "http-server dist/ -s"
   },
